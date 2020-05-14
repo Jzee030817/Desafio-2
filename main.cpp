@@ -185,7 +185,7 @@ int main()
             //Para el promedio individual, recuerde que se deben sumar las M notas coontenidas en cada una de las filas de la matriz y dividirlas entre M.
             //Escriba el codigo necesario para realizarlo.
             system("clear");
-            
+
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < m; j++)
@@ -207,8 +207,8 @@ int main()
 
         case 'e':
             system("exit");
+            return 0;
             break;
-
         default:
             cout << "No se ha seleccionado una opcion Valida..." << endl;
             break;
