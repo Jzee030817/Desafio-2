@@ -5,8 +5,19 @@ Programa que mediante el uso de arreglos, matrices, ciclos repetitivos, realiza 
 
 #include <iostream>
 #include <string.h>
+#include <vector>
+#include <algorithm>
+#include <string>
+#include <sstream>
 
 using namespace std;
+
+class PromedioEstudiante{
+	public:
+		int Id;
+		string NombreEstudiante;
+		float Promedio;
+};
 
 int main()
 {
@@ -32,6 +43,10 @@ int main()
     float promedios[n];     //Arreglo de N posiciones que podra almacenar los promedios de cada uno de los alumnos
     float mi_arreglo[n][m]; //Matriz de N filas (Una para cada alumno) y de M columnas (Una para cada una de las notas)
     float PromedioG = 0;
+    float posicionPrimerLugar = -1;
+    float posicionSegundoLugar = -1;
+    float posicionTercerLugar = -1;
+    vector<PromedioEstudiante> PosicionEstudianteYPromedio;
     int j = n * m;
 
     system("clear");
@@ -194,7 +209,7 @@ int main()
                 }
                 cout << endl;
             }
-            
+
             cout << PromedioG/j << endl;
 
             break;
@@ -202,6 +217,28 @@ int main()
         case 'd':
             // //Para Calcular el promedio global de la clase, es necesario calcular el promedio individual de cada uno de los alumnos, y finalmente en base al promedio de cada uno de estos
             // Se deberan ordenar de acuerdo a las notas para determinar cual de ellos son los 3 primeros lugares.
+            system("clear");
+
+            for (int i = 0; i < n; i++)
+            {
+                PromedioG = 0;
+                for (int j = 0; j < m; j++)
+                {
+                    PromedioG = PromedioG + mi_arreglo[i][j];
+                    //cout <<  PromedioG << endl;
+                }
+                PromedioEstudiante promedioEstudiante;
+                promedioEstudiante.Id=i;
+                promedioEstudiante.NombreEstudiante = nombres[i];
+                promedioEstudiante.Promedio = PromedioG/m;
+                PosicionEstudianteYPromedio.push_back(promedioEstudiante);
+            }
+            sort(PosicionEstudianteYPromedio.begin(), PosicionEstudianteYPromedio.end(), [](PromedioEstudiante&a, PromedioEstudiante&b)->bool { return a.Promedio > b.Promedio; });
+            for(PromedioEstudiante &data : PosicionEstudianteYPromedio){
+                cout << "Nombre: " + data.NombreEstudiante  << endl;
+                cout << "Promedio obtenido: "<< data.Promedio <<endl;
+                cout << "------" << endl;
+            }
 
             break;
 
