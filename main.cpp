@@ -46,7 +46,7 @@ int main()
     float posicionPrimerLugar = -1;
     float posicionSegundoLugar = -1;
     float posicionTercerLugar = -1;
-    vector<PromedioEstudiante> PosicionEstudianteYPromedio;
+    vector<PromedioEstudiante> PosicionEstudianteYPromedio; //Vector del tipo PromedioEstudiante(Se utiliza en la representacion de los mejores promedios)
     int j = n * m;
 
     system("clear");
@@ -218,7 +218,7 @@ int main()
             // //Para Calcular el promedio global de la clase, es necesario calcular el promedio individual de cada uno de los alumnos, y finalmente en base al promedio de cada uno de estos
             // Se deberan ordenar de acuerdo a las notas para determinar cual de ellos son los 3 primeros lugares.
             system("clear");
-
+			//Calculo de promedio individual, los promedios obtenidos se almacenan en un vector del tipo PromedioEstudiante 
             for (int i = 0; i < n; i++)
             {
                 PromedioG = 0;
@@ -234,21 +234,49 @@ int main()
                 PosicionEstudianteYPromedio.push_back(promedioEstudiante);
             }
             sort(PosicionEstudianteYPromedio.begin(), PosicionEstudianteYPromedio.end(), [](PromedioEstudiante&a, PromedioEstudiante&b)->bool { return a.Promedio > b.Promedio; });
-//            for(PromedioEstudiante &data : PosicionEstudianteYPromedio){
-//                cout << "Nombre: " + data.NombreEstudiante  << endl;
-//                cout << "Promedio obtenido: "<< data.Promedio <<endl;
-//                cout << "------" << endl;
-//            }
-                cout << "Nombre: " + PosicionEstudianteYPromedio[0].NombreEstudiante  << endl;
-                cout << "Promedio obtenido: "<< PosicionEstudianteYPromedio[0].Promedio <<endl;
-                cout << "------" << endl;
-                cout << "Nombre: " + PosicionEstudianteYPromedio[1].NombreEstudiante  << endl;
-                cout << "Promedio obtenido: "<< PosicionEstudianteYPromedio[1].Promedio <<endl;
-                cout << "------" << endl;
-                cout << "Nombre: " + PosicionEstudianteYPromedio[2].NombreEstudiante  << endl;
-                cout << "Promedio obtenido: "<< PosicionEstudianteYPromedio[2].Promedio <<endl;
-                cout << "------" << endl;
-
+				//Se determina si se puede representar los lugares
+				if (n > 0) {
+					//Etructura switch utilizada para evaluar cantidad de lugares a dar dependiendo la cantidad de alumnos registrados
+					switch (n) {
+						case 1:
+							cout << "-----------------------" << endl;
+							cout << " 1er Lugar:" << endl;
+							cout << "Nombre: " + PosicionEstudianteYPromedio[0].NombreEstudiante  << endl;
+                			cout << "Promedio obtenido: "<< PosicionEstudianteYPromedio[0].Promedio <<endl;
+                			cout << "-----------------------" << endl;
+							break;
+						case 2: 
+					    	cout << "-----------------------" << endl;
+							cout << "1er Lugar:" << endl;
+							cout << "Nombre: " + PosicionEstudianteYPromedio[0].NombreEstudiante  << endl;
+                			cout << "Promedio obtenido: "<< PosicionEstudianteYPromedio[0].Promedio <<endl;
+                			cout << "-----------------------" << endl;
+                			cout << "2do Lugar:" << endl;
+                			cout << "Nombre: " + PosicionEstudianteYPromedio[1].NombreEstudiante  << endl;
+                			cout << "Promedio obtenido: "<< PosicionEstudianteYPromedio[1].Promedio <<endl;
+                			cout << "-----------------------" << endl;
+							break;
+						default:
+							cout << "-----------------------" << endl;
+							cout << "1er Lugar:" << endl;
+							cout << "Nombre: " + PosicionEstudianteYPromedio[0].NombreEstudiante  << endl;
+                			cout << "Promedio obtenido: "<< PosicionEstudianteYPromedio[0].Promedio <<endl;
+                			cout << "-----------------------" << endl;
+                			cout << "2do Lugar:" << endl;
+                			cout << "Nombre: " + PosicionEstudianteYPromedio[1].NombreEstudiante  << endl;
+                			cout << "Promedio obtenido: "<< PosicionEstudianteYPromedio[1].Promedio <<endl;
+                			cout << "-----------------------" << endl;
+                			cout << "3er Lugar:" << endl;
+                			cout << "Nombre: " + PosicionEstudianteYPromedio[2].NombreEstudiante  << endl;
+                			cout << "Promedio obtenido: "<< PosicionEstudianteYPromedio[2].Promedio <<endl;
+                			cout << "-----------------------" << endl;
+							break;
+					}
+				} else {
+							cout << "+----------------------------------------------------------------+" << endl;
+							cout << "| No se puede determinar los lugares, no hay alumnos registrados |" << endl;
+                			cout << "+----------------------------------------------------------------+" << endl;
+				}
 
             break;
 
