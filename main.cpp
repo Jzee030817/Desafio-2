@@ -234,11 +234,21 @@ int main()
                 PosicionEstudianteYPromedio.push_back(promedioEstudiante);
             }
             sort(PosicionEstudianteYPromedio.begin(), PosicionEstudianteYPromedio.end(), [](PromedioEstudiante&a, PromedioEstudiante&b)->bool { return a.Promedio > b.Promedio; });
-            for(PromedioEstudiante &data : PosicionEstudianteYPromedio){
-                cout << "Nombre: " + data.NombreEstudiante  << endl;
-                cout << "Promedio obtenido: "<< data.Promedio <<endl;
+//            for(PromedioEstudiante &data : PosicionEstudianteYPromedio){
+//                cout << "Nombre: " + data.NombreEstudiante  << endl;
+//                cout << "Promedio obtenido: "<< data.Promedio <<endl;
+//                cout << "------" << endl;
+//            }
+                cout << "Nombre: " + PosicionEstudianteYPromedio[0].NombreEstudiante  << endl;
+                cout << "Promedio obtenido: "<< PosicionEstudianteYPromedio[0].Promedio <<endl;
                 cout << "------" << endl;
-            }
+                cout << "Nombre: " + PosicionEstudianteYPromedio[1].NombreEstudiante  << endl;
+                cout << "Promedio obtenido: "<< PosicionEstudianteYPromedio[1].Promedio <<endl;
+                cout << "------" << endl;
+                cout << "Nombre: " + PosicionEstudianteYPromedio[2].NombreEstudiante  << endl;
+                cout << "Promedio obtenido: "<< PosicionEstudianteYPromedio[2].Promedio <<endl;
+                cout << "------" << endl;
+
 
             break;
 
