@@ -210,6 +210,8 @@ int main()
                 cout << endl;
             }
 
+            cout << "El promedio global es:" << endl;
+
             cout << PromedioG/j << endl;
 
             break;
